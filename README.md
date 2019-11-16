@@ -30,8 +30,8 @@ You will also see any lint errors in the console.
 
 ## Built With
 
-* [Visual Studio Code](https://code.visualstudio.com/) - The web framework used
-* [React](https://reactjs.org/) - Dependency Management
+* [Visual Studio Code](https://code.visualstudio.com/) - The text editor used for creating the app.
+* [React](https://reactjs.org/) - JavaScript library used for the user interface.
 
 ## Authors
 
@@ -43,6 +43,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Kyle Cook for this wonderful course. I learned a lot in just a small amount of time. 
+* Kyle Cook for his wonderful course. I learned a lot in just a small amount of time. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
