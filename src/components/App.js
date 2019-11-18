@@ -48,6 +48,9 @@ function App() {
     const newRecipe = {
       id: uuidv4(),
       name: '',
+      authors: [
+        { id: uuidv4(), name: '' }
+      ],
       servings: 1,
       cookTime: '',
       instructions: '',
@@ -86,6 +89,10 @@ const sampleRecipes = [
   {
     id: 1,
     name: 'Plain Chicken',
+    authors: [
+      { id: uuidv4(), name: 'Boris Nikolaev' },
+      { id: uuidv4(), name: 'Rocío de Matías' }
+    ],
     servings: 3,
     cookTime: '1:45',
     instructions: "1. Put salt on chicken\n2. Put chicken in oven\n3. Eat chicken",
@@ -105,6 +112,9 @@ const sampleRecipes = [
   {
     id: 2,
     name: 'Plain Pork',
+    authors: [
+      { id: uuidv4(), name: 'Kylo Ren' }
+    ],
     servings: 5,
     cookTime: '0:45',
     instructions: "1. Put paprika on pork\n2. Put pork in oven\n3. Eat pork",

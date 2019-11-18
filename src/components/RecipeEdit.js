@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import RecipeIngredientEdit from './RecipeIngredientEdit'
+import RecipeAuthorEdit from './RecipeAuthorEdit'
 import { RecipeContext } from './App'
 import uuidv4 from 'uuid/v4'
 
@@ -29,6 +30,25 @@ export default function RecipeEdit({ recipe }) {
 
     function handleIngredientDelete(id) {
         handleChange({ ingredients: recipe.ingredients.filter(i => i.id !== id) })
+    }
+
+    function handleAuthorChange(id, author) {
+        const newAuthors = [...recipe.authors]
+        const index = newAuthors.findIndex(i => i.id === id)
+        newAuthors[index] = author
+        handleChange({ authors: newAuthors })
+    }
+
+    function handleAuthorAdd() {
+        const newAuthor = {
+            id: uuidv4(),
+            name: ''
+        }
+        handleChange({ authors: [...recipe.authors, newAuthor] })
+    }
+
+    function handleAuthorDelete(id) {
+        handleChange({ authors: recipe.authors.filter(i => i.id !== id) })
     }
 
     return (
@@ -70,6 +90,22 @@ export default function RecipeEdit({ recipe }) {
                     className="recipe-edit__input"
                     value={recipe.instructions}
                     onChange={e => handleChange({ instructions: e.target.value })} />
+            </div>
+            <br />
+            <label className="recipe-edit__label">Authors</label>
+            <div className="recipe-edit__author-grid">
+                <div>Name</div>
+                <div></div>
+                {recipe.authors.map(author => (
+                    <RecipeAuthorEdit key={author.id}
+                        handleAuthorDelete={handleAuthorDelete}
+                        handleAuthorChange={handleAuthorChange}
+                        author={author} />
+                ))}
+            </div>
+            <div className="recipe-edit__add-ingredient-btn-container">
+                <button className="btn btn--primary"
+                    onClick={() => handleAuthorAdd()}>Add Author</button>
             </div>
             <br />
             <label className="recipe-edit__label">Ingredients</label>

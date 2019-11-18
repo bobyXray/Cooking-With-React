@@ -1,16 +1,18 @@
 import React, { useContext } from 'react'
 import IngredientList from './IngredientList'
 import { RecipeContext } from './App'
+import AuthorList from './AuthorList'
 
 export default function Recipe(props) {
-    const { handleRecipeDelete, handleRecipeSelect} = useContext(RecipeContext)
+    const { handleRecipeDelete, handleRecipeSelect } = useContext(RecipeContext)
     const {
         id,
         name,
+        authors,
         cookTime,
         servings,
         instructions,
-        ingredients, 
+        ingredients,
     } = props
 
     return (
@@ -19,9 +21,15 @@ export default function Recipe(props) {
                 <h3 className="recipe__title">{name}</h3>
                 <div>
                     <button className="btn btn--primary mr-1"
-                    onClick={() => handleRecipeSelect(id)}>Edit</button>
-                    <button className="btn btn--danger mr-1" 
-                    onClick={() => handleRecipeDelete(id)}>Delete</button>
+                        onClick={() => handleRecipeSelect(id)}>Edit</button>
+                    <button className="btn btn--danger mr-1"
+                        onClick={() => handleRecipeDelete(id)}>Delete</button>
+                </div>
+            </div>
+            <div className="recipe__row">
+                <span className="recipe__label">Authors: </span>
+                <div className="recipe__value recipe__value--indented">
+                    <AuthorList authors={authors} />
                 </div>
             </div>
             <div className="recipe__row">
@@ -32,7 +40,7 @@ export default function Recipe(props) {
                 <span className="recipe__label">Servings: </span>
                 <span className="recipe__value">{servings}</span>
             </div>
-            <div className="recipe__row"> 
+            <div className="recipe__row">
                 <span className="recipe__label">Instructions: </span>
                 <div className="recipe__value recipe__value--indented recipe__instructions">
                     {instructions}
@@ -41,7 +49,7 @@ export default function Recipe(props) {
             <div className="recipe__row">
                 <span className="recipe__label">Ingredients: </span>
                 <div className="recipe__value recipe__value--indented">
-                    <IngredientList ingredients={ingredients}/>
+                    <IngredientList ingredients={ingredients} />
                 </div>
             </div>
         </div>
