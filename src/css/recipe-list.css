@@ -1,11 +1,23 @@
 .recipe-list {
-    border-right: 1px solid black;
-    min-height: 100vh;
-    width: 50%;
+  border-right: 1px solid black;
+  min-height: 100vh;
+  width: 50%;
 }
 
 .recipe-list__add-recipe-btn-container {
-    padding-top:30px;
-    padding-bottom:30px;
-    text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.recipe-list__search-container {
+  text-align: center;
+  width: 50%;
+  border-right: 1px solid black;
+}
+
+.recipe-list__search-input {
+  width: 50% !important;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }

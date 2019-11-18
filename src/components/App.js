@@ -8,8 +8,10 @@ export const RecipeContext = React.createContext()
 const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
 function App() {
   const [selectedRecipeId, setSelectedRecipeId] = useState()
+  const [recipeSearchString, setRecipeSearchString] = useState()
   const [recipes, setRecipes] = useState(sampleRecipes)
   const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeId)
+  const recipesFound = recipes.filter(recipe => recipeSearchString !== undefined && checkRecipeSearch(recipe))
 
   useEffect(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
@@ -24,11 +26,22 @@ function App() {
     handleRecipeAdd,
     handleRecipeDelete,
     handleRecipeSelect,
-    handleRecipeChange
+    handleRecipeChange,
+    handleRecipeSearch
+  }
+
+  function checkRecipeSearch(recipe) {
+    return recipe.name.toLowerCase().includes(recipeSearchString.toLowerCase()) ||
+      recipe.instructions.toLowerCase().includes(recipeSearchString.toLowerCase()) ||
+      recipe.ingredients.find(ingredient => ingredient.name.toLowerCase().includes(recipeSearchString.toLowerCase()))
   }
 
   function handleRecipeSelect(id) {
     setSelectedRecipeId(id)
+  }
+
+  function handleRecipeSearch(string) {
+    setRecipeSearchString(string)
   }
 
   function handleRecipeAdd() {
@@ -62,7 +75,7 @@ function App() {
 
   return (
     <RecipeContext.Provider value={recipeContextValue}>
-      <RecipeList recipes={recipes} />
+      <RecipeList recipes={recipeSearchString !== undefined ? recipesFound : recipes} />
       {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
     </RecipeContext.Provider>
   )
