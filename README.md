@@ -35,7 +35,7 @@ You will also see any lint errors in the console.
 
 ## Authors
 
-* **Boris Nikolaev** - *Initial work* - [bobyXray](https://github.com/bobyXray)
+* **Boris Nikolaev** - *Initial work* - [borisNk](https://github.com/borisNk)
 
 ## License
 
